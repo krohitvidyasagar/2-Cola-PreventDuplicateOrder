@@ -1,4 +1,4 @@
-# Order Prevention
+# Prevent Duplicate Order
 
 ## Special Note
 This implementation is **not a scalable solution**. In a typical production environment, the server would generate a
