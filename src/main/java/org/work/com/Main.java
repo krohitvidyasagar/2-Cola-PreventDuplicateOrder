@@ -6,7 +6,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Main {
@@ -14,6 +13,7 @@ public class Main {
         String orderListPath = "./src/main/resources/orderList.json";
         String newOrderPath = "./src/main/resources/newOrder.json";
 
+        // Processing all the past orders and storing them in a map
         Map<String, List<Order>> ordersMap = getAllProcessedOrders(orderListPath);
 
         // Read a new order from newOrder.json
@@ -23,6 +23,7 @@ public class Main {
         boolean canOrderBeAdded = isValidOrder(ordersMap, newOrder);
 
         if (canOrderBeAdded) {
+            // If the order can be added, add it to the map
             addOrderToMap(ordersMap, newOrder);
             System.out.println("Order was added successfully.");
         } else {
@@ -50,7 +51,6 @@ public class Main {
 
             // Parse JSON content
             JSONArray jsonArray = new JSONArray(content);
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -68,6 +68,7 @@ public class Main {
                 }
 
                 Order order = new Order(outletId, orderDate, items);
+                // Add the order to the map
                 ordersMap.computeIfAbsent(outletId, k -> new ArrayList<>()).add(order);
             }
 
@@ -130,7 +131,8 @@ public class Main {
         long timeDifference = newOrderDate.getTime() - lastOrderDate.getTime();
         long timeDifferenceInMinutes = timeDifference / (1000 * 60);
 
-        if (timeDifferenceInMinutes > 30) {
+        // Keeping the cut-off as 24 hours
+        if (timeDifferenceInMinutes > 24 * 60) {
             return true;
         }
 
