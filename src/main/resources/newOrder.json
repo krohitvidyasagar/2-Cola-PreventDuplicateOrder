@@ -1,0 +1,39 @@
+{
+  "totalOrderValue": "80.00",
+  "totalDiscount": "0.00",
+  "totalTax": "4.00",
+  "movFee": "15.00",
+  "deliveryFee": "10.00",
+  "netInvoice": "109.00",
+  "outletId": "001234567",
+  "item": [
+    {
+      "UPC_Code": "049000012781",
+      "desc": "Coca-Cola Soda, 12 Fl. Oz., 24 Count",
+      "qty": "50",
+      "basePrice": "2.00",
+      "itemPrice": "2.00",
+      "adjustments": [
+        {
+          "adjustment": "",
+          "amount": "0.00",
+          "desc": ""
+        }
+      ]
+    },
+    {
+      "UPC_Code": "049000064971",
+      "desc": "Coca-Cola Zero, 24 ct, 7.5 FL OZ Mini-Can",
+      "qty": "30",
+      "basePrice": "2.00",
+      "itemPrice": "0.00",
+      "adjustments": [
+        {
+          "adjustment": "Buy one get one",
+          "amount": "-5.00",
+          "desc": ""
+        }
+      ]
+    }
+  ]
+}
